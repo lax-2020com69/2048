@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>2048 Game</title>
   <style>
+    /* Base styles (your original styles remain mostly unchanged) */
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
       font-family: Arial, sans-serif;
       display: flex;
@@ -18,22 +20,23 @@
       align-items: center;
       height: 100vh;
       background-color: #faf8ef;
+      padding: 10px; /* Add some padding for small devices */
     }
-
+    
     .game-container {
       text-align: center;
       width: 100%;
       max-width: 400px;
       padding: 20px;
     }
-
+    
     .game-title {
       font-size: 8vw;
-      max-font-size: 48px;
+      max-font-size: 48px; /* Note: 'max-font-size' is invalid CSS, replace with media queries */
       margin-bottom: 20px;
       color: #776e65;
     }
-
+    
     .game-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -45,7 +48,7 @@
       padding: 10px;
       margin: 0 auto 20px auto;
     }
-
+    
     .tile {
       display: flex;
       justify-content: center;
@@ -58,7 +61,8 @@
       transition: background-color 0.2s, transform 0.2s;
       aspect-ratio: 1;
     }
-
+    
+    /* Tile colors (unchanged) */
     .tile-2 { background-color: #eee4da; color: #776e65; }
     .tile-4 { background-color: #ede0c8; color: #776e65; }
     .tile-8 { background-color: #f2b179; }
@@ -70,13 +74,13 @@
     .tile-512 { background-color: #edc850; }
     .tile-1024 { background-color: #edc53f; }
     .tile-2048 { background-color: #edc22e; }
-
+    
     .score-container {
       font-size: 5vw;
       color: #776e65;
       margin-bottom: 15px;
     }
-
+    
     .restart-btn {
       padding: 12px 24px;
       font-size: 5vw;
@@ -85,12 +89,15 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
     }
-
+    
     .restart-btn:hover {
       background-color: #6b4f3b;
     }
-
+    
     .game-over-popup {
       position: fixed;
       top: 0;
@@ -102,8 +109,9 @@
       justify-content: center;
       align-items: center;
       z-index: 10;
+      padding: 20px;
     }
-
+    
     .popup-content {
       background-color: #f2f2f2;
       padding: 30px;
@@ -113,12 +121,12 @@
       width: 80%;
       max-width: 300px;
     }
-
+    
     .popup-content h2 {
       margin-bottom: 20px;
       font-size: 6vw;
     }
-
+    
     .popup-content button {
       margin: 10px 0;
       padding: 12px 24px;
@@ -130,9 +138,76 @@
       cursor: pointer;
       width: 100%;
     }
-
+    
     .popup-content button:hover {
       background-color: #6b4f3b;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .game-title {
+        font-size: 10vw;
+      }
+      .score-container {
+        font-size: 6vw;
+      }
+      .restart-btn {
+        font-size: 6vw;
+        padding: 14px 20px;
+      }
+      .popup-content h2 {
+        font-size: 8vw;
+      }
+      .popup-content button {
+        font-size: 6vw;
+      }
+      .tile {
+        font-size: calc(4vw + 2vmin);
+      }
+    }
+    
+    @media (min-width: 481px) and (max-width: 768px) {
+      .game-title {
+        font-size: 7vw;
+      }
+      .score-container {
+        font-size: 5vw;
+      }
+      .restart-btn {
+        font-size: 5vw;
+      }
+      .popup-content h2 {
+        font-size: 6vw;
+      }
+      .popup-content button {
+        font-size: 4.5vw;
+      }
+      .tile {
+        font-size: calc(3vw + 1.5vmin);
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .game-title {
+        font-size: 48px;
+      }
+      .score-container {
+        font-size: 24px;
+      }
+      .restart-btn {
+        font-size: 20px;
+        width: auto;
+        padding: 12px 24px;
+      }
+      .popup-content h2 {
+        font-size: 28px;
+      }
+      .popup-content button {
+        font-size: 18px;
+      }
+      .tile {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
